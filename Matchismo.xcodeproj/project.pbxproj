@@ -22,6 +22,7 @@
 		6C19DD4B16B35A360022332A /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C19DD4A16B35A360022332A /* Deck.m */; };
 		6CDBE88916B4472E0010522C /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDBE88816B4472E0010522C /* PlayingCard.m */; };
 		6CDBE88D16B456A10010522C /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CDBE88C16B456A10010522C /* PlayingCardDeck.m */; };
+		6CDBE89716B4B46F0010522C /* ReadMe in Resources */ = {isa = PBXBuildFile; fileRef = 6CDBE89616B4B46F0010522C /* ReadMe */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		6CDBE88816B4472E0010522C /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingCard.m; path = Model/PlayingCard.m; sourceTree = "<group>"; };
 		6CDBE88B16B456A10010522C /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingCardDeck.h; path = Model/PlayingCardDeck.h; sourceTree = "<group>"; };
 		6CDBE88C16B456A10010522C /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingCardDeck.m; path = Model/PlayingCardDeck.m; sourceTree = "<group>"; };
+		6CDBE89616B4B46F0010522C /* ReadMe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				6C19DD3F16B349250022332A /* CardGameViewController.m */,
 				6C19DD4C16B35A4D0022332A /* Model */,
 				6C19DD2A16B349250022332A /* Supporting Files */,
+				6CDBE89616B4B46F0010522C /* ReadMe */,
 			);
 			path = Matchismo;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				6C19DD3816B349250022332A /* Default@2x.png in Resources */,
 				6C19DD3A16B349250022332A /* Default-568h@2x.png in Resources */,
 				6C19DD3D16B349250022332A /* MainStoryboard.storyboard in Resources */,
+				6CDBE89716B4B46F0010522C /* ReadMe in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,5 +13,8 @@
 
 - (void)addCard:(Card *)card atTop:(BOOL)atTop;
 - (Card *)drawRandomCard;
+- (void)removeCardFromDeck:(Card *)card;
+- (NSUInteger)count;
+- (BOOL)isCardInDeck:(Card *)card;
 
 @end

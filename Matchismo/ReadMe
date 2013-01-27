@@ -1,0 +1,20 @@
+//
+//  README
+//  Matchismo
+//
+//  Created by Dulio Denis on 1/26/13.
+//  Copyright (c) 2013 Stanford University. All rights reserved.
+//
+Tag 1: Copied Walkthrough from Lecture 2.
+Tag 2: Added Model Classes from Lecture 1.
+Tag 3: Added Card Model Implementation from Lecture 1.
+Tag 4: Added PlayingCard and PlayingCardDeck Model Classes from Lecture 2.
+Tag 5: Added cycling through a full deck picking one card at a time and decrementing the deck.
+
+Planned:
+Tag 6: Below extras.
+
+To-Do:
+1. In the ViewController stop when the deck has no cards.
+2. Show the whole deck in a string in the UI to see the deck diminishing to zero for every pick.
+3. Add a 'New Deck' button.

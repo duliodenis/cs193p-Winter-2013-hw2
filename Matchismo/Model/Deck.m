@@ -45,4 +45,31 @@
     return randomCard;
 }
 
+- (void)removeCardFromDeck:(Card *)card;
+{
+    if (self.cards.count) {
+        [self.cards removeObjectIdenticalTo:card.contents];
+    }
+}
+
+- (BOOL)isCardInDeck:(Card *)card
+{
+    BOOL found = FALSE;
+    if (self.cards.count) {
+        for (int i = 0; i < self.cards.count; i++) {
+            NSUInteger index = [self.cards indexOfObject:card.contents];
+            if (index != NSNotFound) {
+                found = TRUE;
+            }
+        }
+    }
+    return found;
+}
+
+
+- (NSUInteger)count
+{
+    return [self.cards count];
+}
+
 @end

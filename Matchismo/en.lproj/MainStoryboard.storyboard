@@ -28,8 +28,15 @@
                                     <action selector="flipCard:" destination="2" eventType="touchUpInside" id="VbW-pr-AHO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yo3-Ff-uwf">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Picked: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yo3-Ff-uwf">
                                 <rect key="frame" x="20" y="419" width="81" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Remaining: 52" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gvr-H2-g4v">
+                                <rect key="frame" x="190" y="419" width="110" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -40,6 +47,7 @@
                     </view>
                     <connections>
                         <outlet property="flipsLabel" destination="yo3-Ff-uwf" id="kmo-vN-048"/>
+                        <outlet property="remainingLabel" destination="gvr-H2-g4v" id="bkS-70-oiJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -52,6 +60,7 @@
             <relationships>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="remainingLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
     </classes>
