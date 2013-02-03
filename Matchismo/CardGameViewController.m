@@ -8,69 +8,58 @@
 // Tap through all the cards in the deck.
 
 #import "CardGameViewController.h"
-#import "Deck.h"
+#import "PlayingCardDeck.h"
+#import "CardMatching Game.h"
 
 @interface CardGameViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *remainingLabel;
 @property (nonatomic) int flipCount;
-@property (nonatomic) int cardsLeftInDeck;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *CardButtons;
+@property (strong, nonatomic) CardMatching_Game *game;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @end
 
 @implementation CardGameViewController
 
-- (PlayingCardDeck *)deck
+- (CardMatching_Game *)game
 {
-    if (!_deck) {
-        _deck = [[PlayingCardDeck alloc] init];
-    }
-    return _deck;
+    if (!_game) _game = [[CardMatching_Game alloc] initWithCardCount:[self.CardButtons count]
+                                                           usingDeck:[[PlayingCardDeck alloc] init]];
+    return _game;
 }
 
-- (int)cardsLeftInDeck
+- (void)setCardButtons:(NSArray *)CardButtons
 {
-    if (!_cardsLeftInDeck) {
-        _cardsLeftInDeck = 52;
-    }
-    return _cardsLeftInDeck;
+    _CardButtons = CardButtons;
+    [self updateUI];
 }
 
-- (id)init
+-(void)updateUI
 {
-    self = [self init];
-    if (self) {
-        
-        
+    for (UIButton *cardButton in self.CardButtons) {
+        Card *card = [self.game cardAtindex:[self.CardButtons indexOfObject:cardButton]];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        cardButton.selected = card.isFaceUp;
+        cardButton.enabled = !card.isUnplayable;
+        cardButton.alpha = (card.unplayable ? 0.3 : 1.0);
     }
-    return self;
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score = %d", self.game.score];
 }
+
 
 -(void)setFlipCount:(int)flipCount
 {
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"Picked: %d", self.flipCount];
-    self.remainingLabel.text = [NSString stringWithFormat:@"Remaining: %d", self.cardsLeftInDeck];
 }
 
 - (IBAction)flipCard:(UIButton *)sender
 {
-    
-    sender.selected = !sender.isSelected;
-    
-    if (sender.selected) {
-        if (self.cardsLeftInDeck) {
-            Card *randomCard = self.deck.drawRandomCard;
-            
-            [sender setTitle:randomCard.description forState:UIControlStateSelected];
-            
-            [self.deck removeCardFromDeck:randomCard];
-            
-            self.flipCount++;
-            self.cardsLeftInDeck--;
-
-        }
-    }
+    [self.game flipCardAtIndex:[self.CardButtons indexOfObject:sender]];
+    self.flipCount++;
+    [self updateUI];
 }
 
 @end
