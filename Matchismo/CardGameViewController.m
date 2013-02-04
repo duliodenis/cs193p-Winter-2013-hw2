@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *CardButtons;
 @property (strong, nonatomic) CardMatching_Game *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) IBOutlet UILabel *resultsLabel;
 
 @end
 
@@ -46,6 +47,7 @@
         cardButton.alpha = (card.unplayable ? 0.3 : 1.0);
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score = %d", self.game.score];
+    self.resultsLabel.text = self.game.flipResult;
 }
 
 

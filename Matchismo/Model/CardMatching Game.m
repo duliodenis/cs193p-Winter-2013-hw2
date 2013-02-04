@@ -28,6 +28,8 @@
 
 - (void)flipCardAtIndex:(NSUInteger)index
 {
+    BOOL didMatch, misMatch;
+    
     Card *card = [self cardAtindex:index];
     if (card && !card.isUnplayable) {
         if (!card.isFaceUp) {
@@ -38,16 +40,23 @@
                         card.unplayable = YES;
                         otherCard.unplayable = YES;
                         self.score += MATCH_BONUS;
+                        didMatch = TRUE;
+                        self.flipResult = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", otherCard.contents, card.contents, MATCH_BONUS];
+                        
                     } else {
                         otherCard.faceUp = NO;
                         self.score -= MISMATCH_PENALTY;
+                        misMatch = TRUE;
+                        self.flipResult = [NSString stringWithFormat:@"%@ & %@ don't match! %d point loss", otherCard.contents, card.contents, MATCH_BONUS];
+                        
                     }
-                    break;
+                     break;
                 }
             }
             self.score -= FLIP_COST;
         }
         card.faceUp = !card.isFaceUp;
+        if (!didMatch && !misMatch) self.flipResult = [NSString stringWithFormat:@"Flipped up %@", card.contents];
     }
 }
 

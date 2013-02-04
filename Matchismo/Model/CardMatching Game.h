@@ -12,7 +12,7 @@
 
 @interface CardMatching_Game : NSObject
 
-// the designated initializer - we need to know how many cards and the deck
+// the designated initializer - we need to know 1. how many cards and 2. the deck
 -(id)initWithCardCount:(NSUInteger)count
              usingDeck:(Deck *)deck;
 
@@ -20,5 +20,8 @@
 -(Card *)cardAtindex:(NSUInteger)index;
 
 @property (readonly, nonatomic) int score;
+
+// property that contains the English result of the flip
+@property (strong, nonatomic) NSString *flipResult;
 
 @end
