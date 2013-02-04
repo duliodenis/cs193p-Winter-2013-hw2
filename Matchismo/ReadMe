@@ -11,6 +11,7 @@ Tag 3: Added Card Model Implementation from Lecture 1.
 Tag 4: Added PlayingCard and PlayingCardDeck Model Classes from Lecture 2.
 Tag 5: Added cycling through a full deck picking one card at a time and decrementing the deck.
 Tag 6: First HW #1 To-Do: upgraded to Lecture 3.  Multi-cards + CardMatchingGame game model.
+Tag 7: Second HW #1 To-Do: now with 16 cards.
 
 To-Do on HW #0:
 1. In the ViewController stop when the deck has no cards.
@@ -18,8 +19,8 @@ To-Do on HW #0:
 3. Add a 'New Deck' button.
 
 Homework #1:
-1. Upgrade to Lecture 3 code.
-2. Add 4 Cards for a total of 16.
+1. Upgrade to Lecture 3 code. (Done)
+2. Add 4 Cards for a total of 16. (Done)
 3. Add a text label to describe the result of the last flip.
 4. Add Deal Button to Start a New Game.
 5. Add a switch to switch between 2-card match or 3-card match mode.
