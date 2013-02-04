@@ -23,6 +23,14 @@
 
 @implementation CardGameViewController
 
+- (IBAction)deal
+{
+    // realloc game
+    self.game = nil;
+    // repaint UI
+    [self updateUI];
+}
+
 - (CardMatching_Game *)game
 {
     if (!_game) _game = [[CardMatching_Game alloc] initWithCardCount:[self.CardButtons count]
