@@ -22,6 +22,19 @@
             score = 4;
         }
     }
+    
+    else if ([otherCards count] == 2) {
+        PlayingCard *otherCard1 = [otherCards objectAtIndex:0];
+        PlayingCard *otherCard2 = [otherCards objectAtIndex:1];
+        
+        // absolute 3 card matches
+        if ([otherCard1.suit isEqualToString:self.suit] && [otherCard2.suit isEqualToString:self.suit]) {
+            score = 4;         NSLog(@"We match 3 card suits!");
+        } else if (otherCard1.rank == self.rank && otherCard2.rank == self.rank) {
+            score = 8;         NSLog(@"We match 3 card ranks!");
+        }
+    }
+    
     return score;
 }
 

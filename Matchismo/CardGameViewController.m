@@ -18,15 +18,25 @@
 @property (strong, nonatomic) CardMatching_Game *game;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *resultsLabel;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *mode;
+@property (nonatomic) int matchMode;
 
 @end
 
 @implementation CardGameViewController
 
+- (IBAction)mode:(UISegmentedControl *)sender
+{
+    if (sender.selectedSegmentIndex == 0)     {
+        NSLog(@"Value Changed to 2-Card Mode"); self.matchMode = 2;
+    } else     { NSLog(@"Value Changed to 3-Card Mode"); self.matchMode = 3; }
+}
+
 - (IBAction)deal
 {
     // realloc game
     self.game = nil;
+    self.flipCount = 0;
     // repaint UI
     [self updateUI];
 }
@@ -35,6 +45,7 @@
 {
     if (!_game) _game = [[CardMatching_Game alloc] initWithCardCount:[self.CardButtons count]
                                                            usingDeck:[[PlayingCardDeck alloc] init]];
+    if (!self.matchMode) self.matchMode = 2; // default to 2 card mode at first
     return _game;
 }
 
@@ -67,7 +78,7 @@
 
 - (IBAction)flipCard:(UIButton *)sender
 {
-    [self.game flipCardAtIndex:[self.CardButtons indexOfObject:sender]];
+    [self.game flipCardAtIndex:[self.CardButtons indexOfObject:sender] matchMode:self.matchMode];
     self.flipCount++;
     [self updateUI];
 }
