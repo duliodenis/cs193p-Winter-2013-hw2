@@ -37,6 +37,7 @@
     // realloc game
     self.game = nil;
     self.flipCount = 0;
+    self.mode.enabled = TRUE;
     // repaint UI
     [self updateUI];
 }
@@ -80,6 +81,8 @@
 {
     [self.game flipCardAtIndex:[self.CardButtons indexOfObject:sender] matchMode:self.matchMode];
     self.flipCount++;
+    // disable UISegmentControl
+    self.mode.enabled = FALSE;
     [self updateUI];
 }
 

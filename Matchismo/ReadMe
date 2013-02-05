@@ -12,6 +12,14 @@ Tag 4: Added PlayingCard and PlayingCardDeck Model Classes from Lecture 2.
 Tag 5: Added cycling through a full deck picking one card at a time and decrementing the deck.
 Tag 6: First HW #1 To-Do: upgraded to Lecture 3.  Multi-cards + CardMatchingGame game model.
 Tag 7: Second HW #1 To-Do: now with 16 cards.
+Tag 8: Third HW #1 To-Do: now with a text label for the last flip.
+Tag 9: Fourth HW #1 To-Do: Deal Button that redeals cards.
+Tag 10: HW #1 To-Do #5: 3 Card Match
+Storyboard (Added UISegmentedControl for 2 to 3 card match mode)
+CardGameViewController (Mode Aware)
+CardMatchingGame (Match 3 Card Engine)
+PlayingCard (Updated match to 3 card awareness)
+Tag 11: HW #1 To-Do #6: Disable the game play mode control when flipping starts and re-enable it when a re-deal happens: ViewControll & ReadMe Update.
 
 To-Do on HW #0:
 1. In the ViewController stop when the deck has no cards.
@@ -21,8 +29,11 @@ To-Do on HW #0:
 Homework #1:
 1. Upgrade to Lecture 3 code. (Done)
 2. Add 4 Cards for a total of 16. (Done)
-3. Add a text label to describe the result of the last flip.
-4. Add Deal Button to Start a New Game.
-5. Add a switch to switch between 2-card match or 3-card match mode.
-6. Disable switch when flipping starts and enable when Deal button is pressed.
+3. Add a text label to describe the result of the last flip. (Done)
+4. Add Deal Button to Start a New Game. (Done)
+5. Add a switch to switch between 2-card match or 3-card match mode. (Done)
+6. Disable switch when flipping starts and enable when Deal button is pressed. (Done)
 7. Use an image for the back of the card.
+
+HW #1 Extra-Credit:
+Add a UISlider to your UI which travels through the history of the currently-being- played game’s flips and display it to the user. 
