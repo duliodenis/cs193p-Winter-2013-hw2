@@ -59,11 +59,22 @@
 -(void)updateUI
 {
     for (UIButton *cardButton in self.CardButtons) {
-        Card *card = [self.game cardAtindex:[self.CardButtons indexOfObject:cardButton]];
+        Card *card = [self.game cardAtindex:[self.CardButtons indexOfObject:cardButton]];        
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
+        
+        if (self.matchMode == 2) {
+            if (card.isFaceUp) [cardButton setImage:nil forState:UIControlStateNormal];
+            else  [cardButton setImage:[UIImage imageNamed:@"greencardback.png"] forState:UIControlStateNormal];
+        }
+        
+        if (self.matchMode == 3) {
+            if (card.isFaceUp) [cardButton setImage:nil forState:UIControlStateNormal];
+            else  [cardButton setImage:[UIImage imageNamed:@"redcardback.png"] forState:UIControlStateNormal];
+        }
+        
         cardButton.alpha = (card.unplayable ? 0.3 : 1.0);
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score = %d", self.game.score];
@@ -79,6 +90,7 @@
 
 - (IBAction)flipCard:(UIButton *)sender
 {
+    sender.alpha = 0;
     [self.game flipCardAtIndex:[self.CardButtons indexOfObject:sender] matchMode:self.matchMode];
     self.flipCount++;
     // disable UISegmentControl
