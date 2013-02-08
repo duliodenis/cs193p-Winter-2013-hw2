@@ -10,6 +10,7 @@
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
 #import "CardMatching Game.h"
+#import "GameResult.h"
 
 @interface CardGameViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
@@ -20,10 +21,17 @@
 @property (strong, nonatomic) IBOutlet UILabel *resultsLabel;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *mode;
 @property (nonatomic) int matchMode;
+@property (strong, nonatomic) GameResult *gameResult;
 
 @end
 
 @implementation CardGameViewController
+
+- (GameResult *)gameResult
+{
+    if (!_gameResult) _gameResult = [[GameResult alloc] init];
+    return _gameResult;
+}
 
 - (IBAction)mode:(UISegmentedControl *)sender
 {
@@ -36,6 +44,7 @@
 {
     // realloc game
     self.game = nil;
+    self.gameResult = nil;
     self.flipCount = 0;
     self.mode.enabled = TRUE;
     // repaint UI
@@ -95,6 +104,7 @@
     self.flipCount++;
     // disable UISegmentControl
     self.mode.enabled = FALSE;
+    self.gameResult.score = self.game.score;
     [self updateUI];
 }
 
