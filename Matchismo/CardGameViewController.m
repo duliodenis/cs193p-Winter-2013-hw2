@@ -22,7 +22,6 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *mode;
 @property (nonatomic) int matchMode;
 @property (strong, nonatomic) GameResult *gameResult;
-
 @end
 
 @implementation CardGameViewController
@@ -41,7 +40,7 @@
 }
 
 - (IBAction)deal
-{
+{    
     // realloc game
     self.game = nil;
     self.gameResult = nil;
@@ -51,10 +50,13 @@
     [self updateUI];
 }
 
+// based on the tab title use either the Match Game or the Set Game
 - (CardMatching_Game *)game
 {
-    if (!_game) _game = [[CardMatching_Game alloc] initWithCardCount:[self.CardButtons count]
-                                                           usingDeck:[[PlayingCardDeck alloc] init]];
+    if (!_game) {
+        _game = [[CardMatching_Game alloc] initWithCardCount:[self.CardButtons count]
+                                                   usingDeck:[[PlayingCardDeck alloc] init]];
+    }
     if (!self.matchMode) self.matchMode = 2; // default to 2 card mode at first
     return _game;
 }
@@ -95,6 +97,7 @@
 {
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"Picked: %d", self.flipCount];
+    NSLog(@"FlipCount =%d", self.flipCount);
 }
 
 - (IBAction)flipCard:(UIButton *)sender
