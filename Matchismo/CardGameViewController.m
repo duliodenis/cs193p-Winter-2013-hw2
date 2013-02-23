@@ -81,10 +81,12 @@
             else  [cardButton setImage:[UIImage imageNamed:@"greencardback.png"] forState:UIControlStateNormal];
         }
         
-        if (self.matchMode == 3) {
-            if (card.isFaceUp) [cardButton setImage:nil forState:UIControlStateNormal];
-            else  [cardButton setImage:[UIImage imageNamed:@"redcardback.png"] forState:UIControlStateNormal];
-        }
+// the three mode match game (Set) uses a different technique and no backcard flip - highlight / unhighlight
+// to-do a 3 card match game (non-set with a redback) need a gametype variable instead of match mode
+//        if (self.matchMode == 3) {
+//            if (card.isFaceUp) [cardButton setImage:nil forState:UIControlStateNormal];
+//            else  [cardButton setImage:[UIImage imageNamed:@"redcardback.png"] forState:UIControlStateNormal];
+//        }
         
         cardButton.alpha = (card.unplayable ? 0.3 : 1.0);
     }

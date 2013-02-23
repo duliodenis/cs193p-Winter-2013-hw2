@@ -17,7 +17,42 @@
 - (int)match:(NSArray *)otherCards
 {
     // the Set match override
+    // its either a match or it isn't
     int score =0;
+    
+    if (otherCards.count == 2) { // in this game you can only match 3 cards
+        NSLog(@"Trying to match");
+        SetPlayingCard *c1 = self;
+        SetPlayingCard *c2 = otherCards[0];
+        SetPlayingCard *c3 = otherCards[1];
+        
+        // define all ways where we have a set (from wikipedia):
+        // They all have the same number, or they have three different numbers.
+        // They all have the same symbol, or they have three different symbols.
+        // They all have the same shading, or they have three different shadings.
+        // They all have the same color, or they have three different colors.
+        // see: http://en.wikipedia.org/wiki/Set_(game)
+        
+        if (
+            (
+             (
+              (((c1.rank == c2.rank) && (c2.rank == c3.rank) && (c1.rank == c3.rank)) || ((c1.rank != c2.rank) && (c2.rank != c3.rank) && (c1.rank != c3.rank))) &&
+              
+              (([c1.symbol isEqualToString:c2.symbol] && [c2.symbol isEqualToString:c3.symbol] && [c1.symbol isEqualToString:c3.symbol]) ||
+               (![c1.symbol isEqualToString:c2.symbol] && ![c2.symbol isEqualToString:c3.symbol] && ![c1.symbol isEqualToString:c3.symbol])) &&
+
+              (([c1.shade isEqualToString:c2.shade] && [c2.shade isEqualToString:c3.shade] && [c1.shade isEqualToString:c3.shade]) ||
+               (![c1.shade isEqualToString:c2.shade] && ![c2.shade isEqualToString:c3.shade] && ![c1.shade isEqualToString:c3.shade])) &&
+              
+              (([c1.color isEqualToString:c2.color] && [c2.color isEqualToString:c3.color] && [c1.color isEqualToString:c3.color]) ||
+               (![c1.color isEqualToString:c2.color] && ![c2.color isEqualToString:c3.color] && ![c1.shade isEqualToString:c3.color]))
+             )
+            )
+           )
+        {
+            score = 1;
+        }
+    }
     
     return score;
 }

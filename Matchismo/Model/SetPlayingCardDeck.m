@@ -32,7 +32,7 @@
         }
     }
     // there should be 81 cards in the Set Deck
-    if ([self count] != 81) NSLog(@"ERROR: There are %d cards in the new Set Playing Card Deck", [self count]);
+    if ([self count] != 81) NSLog(@"ERROR: There are %d cards in the new Set Playing Card Deck (81 Expected).", [self count]);
     return self;
 }
 

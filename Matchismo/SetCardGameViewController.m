@@ -20,6 +20,7 @@
 @interface SetCardGameViewController ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *CardButtons;
 @property (strong, nonatomic) CardMatching_Game *game;
+@property (nonatomic) int matchMode;
 
 - (NSString *)makeSetCardFace:(Card *)card;
 
@@ -31,6 +32,7 @@
 {
     if (!_game) _game = [[CardMatching_Game alloc] initWithCardCount:[self.CardButtons count]
                                                            usingDeck:[[SetPlayingCardDeck alloc] init]];
+    if (!self.matchMode) self.matchMode = 3;
     return _game;
 }
 
@@ -39,39 +41,7 @@
     return card.contents;
 }
 
-// attributed string stuff:
 /*
- NSMutableAttributedString *as;
-
- as = [[NSMutableAttributedString alloc] initWithString:symbolMark];
- NSRange range = [symbolMark rangeOfString:symbolMark];
- [as addAttributes:@{NSFontAttributeName : [UIColor redColor]} range:range];
- 
- 
- NSLog(@"Attributed String = %@", [as string]);
- 
-> Map these  
-
- + (NSArray *)rankStrings
- {
- return @[@"1", @"2", @"3"];
- }
-
- + (NSArray *)validSymbols
- {
- return @[@"▲", @"●", @"■"];
- }
- 
- + (NSArray *)validShades
- {
- return @[@"solid", @"stripped", @"open"];
- }
- 
- + (NSArray *)validColors
- {
- return @[@"red", @"green", @"purple"];
- }
- 
  enumeration = NUMBER-SYMBOL-SHADE-COLOR
  
  RA= [0] 1 | 2 | 3
@@ -80,7 +50,6 @@
  CO= [3] 0 | 1 | 2 = red, green, purple
  
  Model Enumeration Encoding Ex: 1231 = 1 Circle Purple Solid
- 
 */
 
 - (NSMutableAttributedString *)attributedButtonTitle:(Card *)card
@@ -122,11 +91,7 @@
             [myAttributedString addAttribute:NSStrokeWidthAttributeName value:@4.0f range:range];
             break;
     }
-    
-    // this works - underlining
-    //NSDictionary *attributes = @{NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle)};
-    //[myAttributedString addAttributes:attributes range:range];
-    
+        
     return myAttributedString;
 }
 
@@ -137,10 +102,12 @@
         Card *card = [self.game cardAtindex:[self.CardButtons indexOfObject:cardButton]];
         
         [cardButton setAttributedTitle:[self attributedButtonTitle:card] forState:UIControlStateSelected];
+        [cardButton setAttributedTitle:[self attributedButtonTitle:card] forState:UIControlStateNormal];
         
         // isFaceUp is the new isSelected
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
+        cardButton.backgroundColor = cardButton.isSelected ? [UIColor grayColor]:[UIColor whiteColor];
         cardButton.alpha = (card.unplayable ? 0.3 : 1.0);
     }
 }
